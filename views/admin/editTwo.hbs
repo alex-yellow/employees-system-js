@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">Step 1: Choose Department</div>
+        <div class="card-body">
+          <form method="post" action="/admin/editTwo/{{ employee.id }}">
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" class="form-control" id="name" name="name" value="{{ employee.name }}" required>
+            </div>
+            <div class="form-group">
+              <label for="salary">Salary:</label>
+              <input type="number" class="form-control" id="salary" name="salary" value="{{ employee.salary }}"
+                required>
+            </div>
+            <input type="hidden" name="department_id" value="{{ selectedDepartment }}">
+            <div class="form-group">
+              <label for="profession">Profession:</label>
+              <select class="form-control" id="profession" name="profession_id" required>
+                {{#each professions}}
+                <option value="{{ id }}" {{#if (eq id employee.profession_id)}}selected{{/if}}>{{ name }}</option>
+                {{/each}}
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Save Employee</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

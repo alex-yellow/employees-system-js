@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">Departments</div>
+                <div class="card-body">
+                    <h2><a class="btn btn-success" href="/department/create">Add Department</a></h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#if departments.length}}
+                            {{#each departments}}
+                            <tr>
+                                <th scope="row">{{ this.id }}</th>
+                                <td>{{ this.name }}</td>
+                                <td>
+                                    <a class="btn btn-primary" href="/department/edit/{{ this.id }}">Edit</a>
+                                    <form action="/department/delete/{{ this.id }}" method="POST"
+                                        style="display: inline;">
+                                        <button type="submit" class="btn btn-danger"
+                                            onclick="return confirm('Delete department?')">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {{/each}}
+                            {{else}}
+                            <tr>
+                                <td colspan="3">No departments found.</td>
+                            </tr>
+                            {{/if}}
+                        </tbody>
+                    </table>
+                    <h2><a class="btn btn-primary" href="/admin">Admin Panel</a></h2>
+                    <div class="links">
+                        {{#if departments.pagination}}
+                        {{#each departments.pagination.pages}}
+                        {{#if isCurrentPage}}
+                        <span>{{ number }}</span>
+                        {{else}}
+                        <a href="/departments?page={{ number }}">{{ number }}</a>
+                        {{/if}}
+                        {{/each}}
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

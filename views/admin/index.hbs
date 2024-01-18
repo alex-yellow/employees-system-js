@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">Admin Panel</div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-3">
+                        <h2><a class="btn btn-success" href="/admin/createOne">Add Employee</a></h2>
+                        <h2><a class="btn btn-info" href="/department">Manage Departments</a></h2>
+                        <h2><a class="btn btn-warning" href="/profession">Manage Professions</a></h2>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Salary</th>
+                                <th scope="col">Department</th>
+                                <th scope="col">Profession</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each employees}}
+                            <tr>
+                                <th scope="row">{{ this.id }}</th>
+                                <td>{{ this.name }}</td>
+                                <td>{{ this.salary }}</td>
+                                <td>{{ this.department }}</td>
+                                <td>{{ this.profession }}</td>
+                                <td>
+                                    <a class="btn btn-primary" href="/admin/editOne/{{ this.id }}">Edit</a>
+                                    <form action="/admin/delete/{{this.id}}" method="POST" style="display: inline;">
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {{else}}
+                            <tr>
+                                <td colspan="6">No employees found.</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

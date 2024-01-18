@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Register</div>
+                <div class="card-body">
+                    {{#if session.success}}
+                    <div class="alert alert-success mess" role="alert">
+                        {{session.success}}
+                    </div>
+                    {{/if}}
+                    {{#if error_message}}
+                    <div class="alert alert-danger mess" role="alert">
+                        {{ error_message }}
+                    </div>
+                    {{/if}}
+                    <form method="POST" action="/register">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input id="name" type="text" class="form-control {{#if nameError}}is-invalid{{/if}}"
+                                name="name" value="{{name}}" required autocomplete="name" autofocus>
+                            {{#if nameError}}
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{nameError}}</strong>
+                            </span>
+                            {{/if}}
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input id="password" type="password"
+                                class="form-control {{#if passwordError}}is-invalid{{/if}}" name="password" required
+                                autocomplete="new-password">
+                            {{#if passwordError}}
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{passwordError}}</strong>
+                            </span>
+                            {{/if}}
+                        </div>
+                       <div class="mb-3">
+                            <label for="password-confirm" class="form-label">Confirm Password</label>
+                            <input id="password-confirm" type="password" class="form-control"
+                                name="password_confirmation" required autocomplete="new-password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="is_admin" class="form-label">Are you an admin?</label>
+                            <select id="is_admin" class="form-control" name="admin">
+                                <option value="false">No</option>
+                                <option value="true">Yes</option>
+                            </select>
+                        </div>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Register
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

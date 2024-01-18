@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Home page</div>
+                <div class="card-body">
+                    {{#if session.user}}
+                        <h2><a class="btn btn-danger" href="/logout">Logout</a></h2>
+                        <h2><a class="btn btn-primary" href="/employees">Employees</a></h2>
+                        {{#if session.user.is_admin}}
+                            <h2><a class="btn btn-primary" href="/admin">Admin</a></h2>
+                        {{else}}
+                            <p>Welcome! You are logged in as a regular user.</p>
+                        {{/if}}
+                    {{else}}
+                        <h2><a class="btn btn-success" href="/register">Register</a></h2>
+                        <h2><a class="btn btn-primary" href="/login">Login</a></h2>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

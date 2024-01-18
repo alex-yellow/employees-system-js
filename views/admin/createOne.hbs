@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Step 1: Choose Department</div>
+                <div class="card-body">
+                    <form method="post" action="/admin/createOne">
+                        {{#if messages.error}}
+                        <div class="alert alert-danger" role="alert">
+                            {{ messages.error }}
+                        </div>
+                        {{/if}}
+                        {{#if messages.success}}
+                        <div class="alert alert-success" role="alert">
+                            {{ messages.success }}
+                        </div>
+                        {{/if}}
+                        <div class="mb-3">
+                            <label for="department" class="form-label">Select Department</label>
+                            <select id="department" class="form-control" name="department_id" required>
+                                {{#each departments}}
+                                <option value="{{ id }}">{{ name }}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Next</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

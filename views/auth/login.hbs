@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Login</div>
+                <div class="card-body">
+                    {{#if success_message}}
+                        <div class="alert alert-success mess" role="alert">
+                            {{ success_message }}
+                        </div>
+                    {{/if}}
+                    {{#if error_message}}
+                        <div class="alert alert-danger mess" role="alert">
+                            {{ error_message }}
+                        </div>
+                    {{/if}}
+                    <form method="POST" action="/login">
+                        {{ csrfField }}
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input id="name" type="text" class="form-control {{#if nameError}}is-invalid{{/if}}"
+                                name="name" value="{{name}}" required autocomplete="name" autofocus>
+                            {{#if nameError}}
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{nameError}}</strong>
+                                </span>
+                            {{/if}}
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input id="password" type="password"
+                                class="form-control {{#if passwordError}}is-invalid{{/if}}" name="password" required
+                                autocomplete="new-password">
+                            {{#if passwordError}}
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{passwordError}}</strong>
+                                </span>
+                            {{/if}}
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                    <p>Don't have an account? <a href="/auth/register">Register</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

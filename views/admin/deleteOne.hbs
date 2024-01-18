@@ -1,0 +1,32 @@
+div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Delete Employee</div>
+                <div class="card-body">
+                    <form method="post" action="/admin/deleteOne/{{ id }}">
+                        {{#if messages.error}}
+                        <div class="alert alert-danger" role="alert">
+                            {{ messages.error }}
+                        </div>
+                        {{/if}}
+                        {{#if messages.success}}
+                        <div class="alert alert-success" role="alert">
+                            {{ messages.success }}
+                        </div>
+                        {{/if}}
+                        <div class="mb-3">
+                            <label for="employee" class="form-label">Select Employee</label>
+                            <select id="employee" class="form-control" name="employee_id" required>
+                                {{#each employees}}
+                                <option value="{{ id }}">{{ name }}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
